@@ -37,7 +37,7 @@ public class PlayerBehavior : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * Time.deltaTime * speed);
-        if (transform.position.x > horizontalScreenLimit || transform.position.x < -horizontalScreenLimit)
+        if (transform.position.x > horizontalScreenLimit)
         {
             transform.position = new Vector3(-horizontalScreenLimit, transform.position.y, 0);
         }

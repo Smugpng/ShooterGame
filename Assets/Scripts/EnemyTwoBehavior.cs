@@ -18,5 +18,9 @@ public class EnemyTwoBehavior : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        if (transform.position.y < 0.48f)
+        {
+            transform. Translate(new Vector3(-2, 0, 0)* Time.deltaTime * 4);
+        }
     }
 }
