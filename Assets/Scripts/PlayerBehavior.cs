@@ -15,6 +15,7 @@ public class PlayerBehavior : MonoBehaviour
     public float verticalInput;
     public float horizontalScreenLimit;
     public float verticalScreenLimit;
+    public float midScreenLimit;
     public GameObject bulletPrefab;
 
     // Start is called before the first frame update
@@ -22,7 +23,8 @@ public class PlayerBehavior : MonoBehaviour
     {
         speed = 4f;
         horizontalScreenLimit = 9.5f;
-        verticalScreenLimit = 6.5f;
+        verticalScreenLimit = 3.5f;
+        midScreenLimit = 1f;
     }
 
     // Update is called once per frame; if your computer runs at 60 fps
@@ -46,17 +48,18 @@ public class PlayerBehavior : MonoBehaviour
             transform.position = new Vector3(horizontalScreenLimit, transform.position.y, 0);
         }
 
-        if (transform.position.y > verticalScreenLimit)
+        
+        if (transform.position.y < -verticalScreenLimit)
         {
             transform.position = new Vector3(transform.position.x, -verticalScreenLimit, 0);
         }
-        else if (transform.position.y < -verticalScreenLimit)
+        if (transform.position.y > midScreenLimit)
         {
-            transform.position = new Vector3(transform.position.x, verticalScreenLimit, 0);
+            transform.position = new Vector3(transform.position.x, 1, 0);
         }
     }
 
-    void Shooting()
+     void Shooting()
     {
         //if I press SPACE, create a bullet
         if (Input.GetKeyDown(KeyCode.Space))
